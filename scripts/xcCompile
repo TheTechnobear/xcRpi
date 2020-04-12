@@ -1,0 +1,52 @@
+#!/bin/bash
+BASEDIR=$(dirname "$0")
+export XC_IP=${XC_IP:=tt.local}
+export XC_ROOT=${XC_ROOT:="`realpath $BASEDIR/..`"}
+
+XC_SYSROOT=${XC_ROOT}/sysroot
+
+
+PLATFORM=`uname`
+if [ "${PLATFORM}" = "Darwin" ]; then
+    export TOOLCHAIN=/usr/local/opt
+    export CLANG=$TOOLCHAIN/llvm/bin/clang++
+else
+    export TOOLCHAIN=/usr/lib/llvm-10
+    export CLANG=/usr/bin/clang++-10
+fi 
+
+# echo export TOOLCHAIN=$TOOLCHAIN
+# echo export CLANG=$CLANG
+
+
+export TT_C_OPTS="-march=armv7-a -mtune=cortex-a8 -mfloat-abi=hard -mfpu=neon -ftree-vectorize -ffast-math"
+
+
+export TT_LD_OPTS=" \
+    -L${XC_SYSROOT}/usr/local/lib \
+    -Wl,--no-as-needed  \
+    -lpthread \
+    -lstdc++ -lasound -ldl \
+    -latomic \
+"
+
+
+export XC_OPTS=" \
+ --target=arm-linux-gnueabihf \
+ --sysroot=${XC_SYSROOT} \
+ -isysroot ${XC_SYSROOT} \
+ -isystem ${XC_SYSROOT}/usr/include/c++/6.3.0 \
+ -isystem ${XC_SYSROOT}/usr/include/arm-linux-gnueabihf/c++/6.3.0 \
+ -L${XC_SYSROOT}/usr/lib/gcc/arm-linux-gnueabihf/6.3.0 \
+ -B${XC_SYSROOT}/usr/lib/gcc/arm-linux-gnueabihf/6.3.0 \
+ --gcc-toolchain=TOOLCHAIN/arm-linux-gnueabihf-binutils \
+"
+export XC_CPPFLAGS="${TT_C_OPTS} ${CPPFLAGS}"
+export XC_LDFLAGS="${TT_LD_OPTS} ${LDFLAGS}"
+
+FILE=$1
+OUTFILE="${FILE%.*}"
+
+
+echo ${CLANG} ${XC_OPTS} ${XC_CPPFLAGS} ${XC_LDFLAGS} -o ${OUTFILE} ${FILE}
+${CLANG} ${XC_OPTS} ${XC_CPPFLAGS} ${XC_LDFLAGS} -o ${OUTFILE} ${FILE} 

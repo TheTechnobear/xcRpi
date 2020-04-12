@@ -1,0 +1,70 @@
+#!/bin/bash
+
+if [ "$0" != "-bash"  -a  "$0" != "/bin/bash" ] ; then  
+    echo must be run as 
+    echo . ~/xcTT/xcSetEnv
+fi
+
+
+if [ "$XC_ROOT" == "" -o "XC_IP" == "" ] ; then
+    if [ -f ~/.xcTT.config ] ; then 
+        echo using ~/.xcTT.config
+        . ~/.xcTT.config
+    fi
+fi
+
+
+export XC_IP=${XC_IP:=tt.local}
+export XC_ROOT=${XC_ROOT:="`realpath ~/xcTT`"}
+export XC_SSH=we@$XC_IP
+
+# store XC_IP/XC_ROOT for next time (user may have overridden)
+echo "export XC_IP=$XC_IP; export XC_ROOT=$XC_ROOT" > ~/.xcTT.config
+
+
+# cant use this, as env scripts cannot get filename 
+# export XC_ROOT=${XC_ROOT:="`realpath $BASEDIR/..`"}
+echo export XC_IP=$XC_IP
+echo export XC_ROOT=$XC_ROOT
+
+export PATH=${XC_ROOT}/scripts:$PATH
+echo PATH=$PATH
+
+
+ping -c 1 -t 1 $XC_IP >/dev/null 2>&1 
+if [ $? -ne 0 ]; then
+    echo WARNING: unable to connect to ${XC_IP}, check XC_IP?
+fi
+
+
+
+# PLATFORM=`uname`
+# if [ "${PLATFORM}" = "Darwin" ]; then
+#     ;
+# else
+#     ;
+# fi 
+
+
+
+xcExec() {
+    echo ssh -o LogLevel=ERROR $XC_SSH "$*"
+    ssh -o LogLevel=ERROR $XC_SSH "$*"
+}
+
+xcCopy() {
+    echo scp -o LogLevel=ERROR $1 $XC_SSH:$2
+    scp -o LogLevel=ERROR $1 $XC_SSH:$2
+}
+
+
+echo ============================
+echo Commands
+
+echo ============================
+echo xcExec remotecmd - execute command on remote 
+echo xcCopy localfile remotefile - copy local file to remote 
+echo xcCompile patch.cpp - compile single c++ file
+echo xcRun  patch - run local executable patch on remote
+echo xcCompileRun patch.cpp  - compile local file and run on remote
+
