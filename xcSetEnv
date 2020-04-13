@@ -6,7 +6,7 @@ if [ "$0" != "-bash"  -a  "$0" != "/bin/bash" ] ; then
 fi
 
 
-if [ "$XC_ROOT" == "" -o "XC_IP" == "" ] ; then
+if [ "$XC_ROOT" == "" -o "$XC_IP" == "" -o "$XC_SSH" == "" ] ; then
     if [ -f ~/.xcRpi.config ] ; then 
         echo using ~/.xcRpi.config
         . ~/.xcRpi.config
@@ -18,8 +18,8 @@ export XC_IP=${XC_IP:=raspberrypi.local}
 export XC_ROOT=${XC_ROOT:="`realpath ~/xcRpi`"}
 export XC_SSH=${XC_SSH:=pi@$XC_IP}
 
-# store XC_IP/XC_ROOT for next time (user may have overridden)
-echo "export XC_IP=$XC_IP; export XC_ROOT=$XC_ROOT" > ~/.xcRpi.config
+# store XC_IP/XC_ROOT/SC_SSH for next time (user may have overridden)
+echo "export XC_IP=$XC_IP; export XC_ROOT=$XC_ROOT; export XC_SSH=$XC_SSH" > ~/.xcRpi.config
 
 
 # cant use this, as env scripts cannot get filename 
