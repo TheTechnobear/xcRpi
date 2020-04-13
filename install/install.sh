@@ -1,6 +1,4 @@
 #!/bin/bash
-set -e
-
 BASEDIR=$(dirname "$0")
 export XC_IP=${XC_IP:=raspberrypi.local}
 export XC_ROOT=${XC_ROOT:="`realpath $BASEDIR/..`"}
@@ -27,6 +25,7 @@ do
     esac
 done
 
+set -e
 
 cd "$XC_ROOT"
 
