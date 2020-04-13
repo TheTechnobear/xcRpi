@@ -8,10 +8,10 @@ you can still include other definitions
 
 e.g.
 ```
-cmake -DCMAKE_TOOLCHAIN_FILE=~/xcTT/cmake/tt-toolchain.cmake  -DTT=on ..
+cmake -DCMAKE_TOOLCHAIN_FILE=~/xcRpi/cmake/tt-toolchain.cmake  -DTT=on ..
 ```
 
-there the toolchain is speficied as `-DCMAKE_TOOLCHAIN_FILE=~/xcTT/cmake/tt-toolchain.cmake`
+there the toolchain is speficied as `-DCMAKE_TOOLCHAIN_FILE=~/xcRpi/cmake/rpi-toolchain.cmake`
 
 
 note:

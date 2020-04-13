@@ -1,25 +1,25 @@
 #!/bin/bash
 
 if [ "$0" != "-bash"  -a  "$0" != "/bin/bash" ] ; then  
-    echo must be run as 
-    echo . ~/xcTT/xcSetEnv
+    echo must be run , using . to source this file
+    echo . ~/xcRpi/xcSetEnv
 fi
 
 
 if [ "$XC_ROOT" == "" -o "XC_IP" == "" ] ; then
-    if [ -f ~/.xcTT.config ] ; then 
-        echo using ~/.xcTT.config
-        . ~/.xcTT.config
+    if [ -f ~/.xcRpi.config ] ; then 
+        echo using ~/.xcRpi.config
+        . ~/.xcRpi.config
     fi
 fi
 
 
-export XC_IP=${XC_IP:=tt.local}
-export XC_ROOT=${XC_ROOT:="`realpath ~/xcTT`"}
-export XC_SSH=we@$XC_IP
+export XC_IP=${XC_IP:=raspberrypi.local}
+export XC_ROOT=${XC_ROOT:="`realpath ~/xcRpi`"}
+export XC_SSH=${XC_SSH:=pi@$XC_IP}
 
 # store XC_IP/XC_ROOT for next time (user may have overridden)
-echo "export XC_IP=$XC_IP; export XC_ROOT=$XC_ROOT" > ~/.xcTT.config
+echo "export XC_IP=$XC_IP; export XC_ROOT=$XC_ROOT" > ~/.xcRpi.config
 
 
 # cant use this, as env scripts cannot get filename 

@@ -15,23 +15,23 @@ however, I dont have the time.... but Im happy to accept pull requests from othe
 
 see specific requirements below, in addition
 
-- computer (not tt) must be connected to the internet to download packages
-- computer must be connected to tt
+- computer (not rpi) must be connected to the internet to download packages
+- computer must be connected to rpi
 
-connection to tt...
+connection to rpi...
 
-the assumption is tt is connected to your computer, and has a hostname resolving to tt.local, if not
+the assumption is rpi is connected to your computer, and has a hostname resolving to raspberrypi.local, if not
 you must set the XC_IP address according 
 
 e.g. 
 ```
-export XC_IP=tt.local
+export XC_IP=raspberrypi.local
 ```
 
 make sure you can successfully log on to tt with this,
 e.g.
 ```
-ssh we@$XC_IP
+ssh pi@$XC_IP
 ```
 
 
@@ -49,16 +49,16 @@ after you have it working , you should be able to do ssh, and not be prompted fo
 
 e.g.
 ```
-ssh we@$XC_IP
+ssh pi@$XC_IP
 ```
 
 
 ## Installing on Mac OS 
-get tt client and scripts
+get rpi client and scripts
 ```
 cd ~
-git clone https://github.com/thetechnobear/xcTT
-cd xcTT
+git clone https://github.com/thetechnobear/xcRpi
+cd xcRpi
 cd install
 ./install
 ```
@@ -103,8 +103,8 @@ Now we are ready to do the install :)
 
 ```
 cd ~
-git clone https://github.com/thetechnobear/xcTT
-cd xcTT
+git clone https://github.com/thetechnobear/xcRpi
+cd xcRpi
 cd install
 ./install
 ```
