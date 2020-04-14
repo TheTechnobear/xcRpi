@@ -2,11 +2,12 @@
 BASEDIR=$(dirname "$0")
 export XC_IP=${XC_IP:=raspberrypi.local}
 export XC_ROOT=${XC_ROOT:="`realpath $BASEDIR/..`"}
-export XC_SSH=${XC_SSH:=pi@$XC_IP}
+export XC_USER=${XC_USER:=pi}
+export XC_SSH=${XC_USER}@${XC_IP}
 
-echo XC_IP : $XC_IP, XC_ROOT : $XC_ROOT
+echo XC_IP : $XC_IP, XC_ROOT : $XC_ROOT, XC_USER $XC_USER
 
-echo "export XC_IP=$XC_IP; export XC_ROOT=$XC_ROOT; export XC_SSH=$XC_SSH" > ~/.xcRpi.config
+echo "export XC_IP=$XC_IP; export XC_ROOT=$XC_ROOT; export XC_USER=$XC_USER" > ~/.xcRpi.config
 
 
 ping -c 1 -t 1 $XC_IP >/dev/null 2>&1 

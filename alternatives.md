@@ -13,7 +13,7 @@ so if your not using raspbian there are 3 things you will want to override.
 
 XC_IP = hostname or ip of your target machine, default :  `raspberrypi.local`
 XC_ROOT = where does xcRpi live, default : `~/xcRPI`
-XC_SSH = how to ssh into target machine, default `pi@raspberrypi.local` 
+XC_USER= user used to log into target machine, default `pi@` 
 
 ## using for multiple targets
 
@@ -57,7 +57,7 @@ In all cases setting XC_ROOT is optional, only really required if you use multip
 ```
 export XC_IP=norns.local
 export XC_ROOT=~/xcNorns
-export XC_SSH=we@norns.local
+export XC_USER==we
 ```
 
 ## Terminal Tedium
@@ -65,7 +65,7 @@ my TT is based off of a norns build, but with a different hostname
 ```
 export XC_IP=tt.local
 export XC_ROOT=~/xcTT
-export XC_SSH=we@norns.local
+export XC_USER==we
 ```
 
 ## QuBit Nebulae 2
@@ -74,10 +74,8 @@ untested, but I believe should work
 ```
 export XC_IP=alarmpi.local
 export XC_ROOT=~/xcNeb2
-export XC_SSH=alarm@alarmpi.local
+export XC_USER==alarm
 ```
-XC_ROOT is optional!
-
 
 ## Organelle-M
 untested, but I believe should work
@@ -86,7 +84,7 @@ note: I do not think organelle-1 will work, but is untested
 ```
 export XC_IP=organellem.local
 export XC_ROOT=~/xcOrganelleM
-export XC_SSH=music@organellem.local
+export XC_USER==music
 ```
 
 

@@ -16,16 +16,20 @@ fi
 
 export XC_IP=${XC_IP:=raspberrypi.local}
 export XC_ROOT=${XC_ROOT:="`realpath ~/xcRpi`"}
-export XC_SSH=${XC_SSH:=pi@$XC_IP}
+export XC_USER=${XC_USER:=pi}
+export XC_SSH=${XC_USER}@${XC_IP}
+
 
 # store XC_IP/XC_ROOT/SC_SSH for next time (user may have overridden)
-echo "export XC_IP=$XC_IP; export XC_ROOT=$XC_ROOT; export XC_SSH=$XC_SSH" > ~/.xcRpi.config
+echo "export XC_IP=$XC_IP; export XC_ROOT=$XC_ROOT; export XC_USER=$XC_USER" > ~/.xcRpi.config
+
 
 
 # cant use this, as env scripts cannot get filename 
 # export XC_ROOT=${XC_ROOT:="`realpath $BASEDIR/..`"}
 echo export XC_IP=$XC_IP
 echo export XC_ROOT=$XC_ROOT
+echo export XC_USER=$XC_USER
 
 export PATH=${XC_ROOT}/scripts:$PATH
 echo PATH=$PATH

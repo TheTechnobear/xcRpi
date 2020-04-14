@@ -42,6 +42,7 @@ e.g.
 ```
 export XC_IP=raspberrypi.local
 export XC_ROOT=~/projects/xcRpi
+export XC_USER=pi
 ```
 
 note: when these are stored in `~/.xcRpi.config`, by install.sh, and xcSetEnv, so only need to be done once, or if you are changing target etc.
@@ -62,9 +63,9 @@ please see [alternatives.md](https://github.com/TheTechnobear/xcRpi/blob/master/
 ## commands
 xcExec remotecmd - execute command on remote 
 xcCopy localfile remotefile - copy local file to remote 
-xcCompile patch.cpp - compile single c++ file
+xcCompile patch - compile all cpp in directory, executable name path
 xcRun  patch - run (local executable) patch on remote
-xcCompileRun patch.cpp  - compile local file and run on remote
+xcCompileRun patch  - compile local file and run on remote 
 
 ## using with cmake
 included in this project is a template which can be used as a cmake toolchain, 

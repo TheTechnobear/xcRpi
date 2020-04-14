@@ -6,6 +6,6 @@ export XC_ROOT=${XC_ROOT:="`realpath $BASEDIR/..`"}
 FILE=$1
 OUTFILE="${FILE%.*}"
 
-xcCompile $*
+xcCompile $1
 shift
 xcRun ${OUTFILE} $*
