@@ -46,6 +46,5 @@ export XC_LDFLAGS="${TT_LD_OPTS} ${LDFLAGS}"
 
 OUTFILE=$1
 
-echo ${CLANG} ${XC_OPTS} ${XC_CPPFLAGS} ${XC_LDFLAGS} -o ${OUTFILE} ${MAIN} *.cpp
-${CLANG} ${XC_OPTS} ${XC_CPPFLAGS} ${XC_LDFLAGS} -o ${OUTFILE} ${MAIN} *.cpp
-
+echo ${CLANG} ${XC_OPTS} ${XC_CPPFLAGS} ${MAIN} *.cpp ${XC_LDFLAGS} -o ${OUTFILE} 
+${CLANG} ${XC_OPTS} ${XC_CPPFLAGS} ${MAIN} *.cpp ${XC_LDFLAGS} -o ${OUTFILE} 

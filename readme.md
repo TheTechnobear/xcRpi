@@ -67,6 +67,32 @@ xcCompile patch - compile all cpp in directory, executable name path
 xcRun  patch - run (local executable) patch on remote
 xcCompileRun patch  - compile local file and run on remote 
 
+
+## compilation
+the compile scripts are **very** simple
+
+`xcCompile patch` 
+will compile all cpp files in current directory, and then produce an output (executable) file called patch
+note: exe name can be anything,
+note: compiling takes no arguments, see below.
+
+`xcRun patch -h` 
+will copy the 'patch' executable to the target machine and run it passing the arguments to it (-h in this example)
+ctrl-C will quit it, and kill the process (patch)
+
+`xcCompileRun patch -h` 
+will call xcCompile then xcRun, note: how args are for the running on patch, not the compiler
+
+
+**Using Compiler and Link flags**
+if you want to use compiler and link flags, use the env vars CPPFLAGS and LDFLAGS
+e.g. 
+```
+CPPFLAGS="-v --save-temps" LDFLAGS=-Wl,--verbose=1 xcCompile abc
+```
+note: how I use quotes for multiple flags
+
+
 ## using with cmake
 included in this project is a template which can be used as a cmake toolchain, 
 see [cmakefaq.md](https://github.com/TheTechnobear/xcRpi/blob/master/cmake/cmakefaq.md)
