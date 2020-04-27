@@ -57,7 +57,7 @@ In all cases setting XC_ROOT is optional, only really required if you use multip
 ```
 export XC_IP=norns.local
 export XC_ROOT=~/xcNorns
-export XC_USER==we
+export XC_USER=we
 ```
 
 ## Terminal Tedium
@@ -65,7 +65,7 @@ my TT is based off of a norns build, but with a different hostname
 ```
 export XC_IP=tt.local
 export XC_ROOT=~/xcTT
-export XC_USER==we
+export XC_USER=we
 ```
 
 ## QuBit Nebulae 2
@@ -74,7 +74,7 @@ untested, but I believe should work
 ```
 export XC_IP=alarmpi.local
 export XC_ROOT=~/xcNeb2
-export XC_USER==alarm
+export XC_USER=alarm
 ```
 
 ## Organelle-M
@@ -84,7 +84,7 @@ note: I do not think organelle-1 will work, but is untested
 ```
 export XC_IP=organellem.local
 export XC_ROOT=~/xcOrganelleM
-export XC_USER==music
+export XC_USER=music
 ```
 
 

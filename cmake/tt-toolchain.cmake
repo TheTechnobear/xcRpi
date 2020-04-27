@@ -1,6 +1,6 @@
 
 
-message("using xc-rpi-toolchain")
+message("using xc-tt-toolchain")
 set(CMAKE_SYSTEM_NAME Linux)
 set(CMAKE_SYSTEM_PROCESSOR arm)
 
@@ -23,8 +23,8 @@ if(DEFINED ENV{<XC_ROOT>})
     set(XC_ROOT ENV{<XC_ROOT>})
     message("using envvar XC_ROOT  - ${XC_ROOT}")
 else()
-    message("defaulting XC_ROOT to ~/xcRpi")
-    get_filename_component(XC_ROOT "~/xcRpi" ABSOLUTE)
+    message("defaulting XC_ROOT to ~/xcTT")
+    get_filename_component(XC_ROOT "~/xcTT" ABSOLUTE)
     message("using envvar XC_ROOT  - ${XC_ROOT}")
 endif()
 
